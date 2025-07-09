@@ -11,22 +11,50 @@ class MyProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppBar(
-        title: Text(
-          "Facebook",
-          style: TextStyle(
-            color: Color.fromRGBO(24, 119, 242, 1),
-            fontSize: 30,
-            // fontFamily: 'Calibri',
-            fontWeight: FontWeight.bold,
+      home: DefaultTabController(
+        length: 5,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "facebook",
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 30,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            actions: [
+              SizedBox(width: 5),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.add, color: Colors.black),
+              ),
+              SizedBox(width: 5),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.search),
+                color: Colors.black,
+              ),
+              SizedBox(width: 5),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.message),
+                color: Colors.black,
+              ),
+            ],
+            bottom: TabBar(
+              labelColor: Colors.blue,
+              unselectedLabelColor: Colors.black,
+              tabs: [
+                Tab(icon: Icon(Icons.home)),
+                Tab(icon: Icon(Icons.people)),
+                Tab(icon: Icon(Icons.storefront)),
+                Tab(icon: Icon(Icons.account_circle)),
+                Tab(icon: Icon(Icons.notifications)),
+              ],
+            ),
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.add, color: Colors.white),
-          ),
-        ],
       ),
     );
   }
