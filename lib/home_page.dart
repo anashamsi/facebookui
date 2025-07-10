@@ -65,37 +65,33 @@ class home_page extends StatelessWidget {
 }
 
 Widget stories() {
-  return Column(
-    children: [
-      SizedBox(height: 10),
-      Row(
-        children: [
-          SizedBox(width: 10),
-          InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(16),
-            child: Container(
-              height: 150,
-              width: 100,
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(16),
+  List<Map<String, String>> storypanel = [];
+  storypanel.addAll([
+    {"name": "Add to story", "image": "", "isAddStory": ""},
+  ]);
+
+  return SizedBox(
+    height: 200,
+    child: ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: storypanel.length,
+      itemBuilder: (context, index) {
+        final story = storypanel[index];
+        final isAddStory = story["isAddStory"] == "true";
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 6),
+          width: 120,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              ClipRect(
+                // borderRadius: BorderRadius.circular(16),
+                child: Image.network(story["image"]!),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.network(
-                    'https://scontent.fkhi20-1.fna.fbcdn.net/v/t39.30808-1/484074580_2303853949990570_9011627301857853580_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e99d92&_nc_ohc=AGcBrM30rzYQ7kNvwF9IrgJ&_nc_oc=AdlvV7Y29J3wuqenKH7GQjQwY7P4diULruVkVpnKzKjX4druzO85MDZrYCCyl1FH1pg&_nc_zt=24&_nc_ht=scontent.fkhi20-1.fna&_nc_gid=equlwuwRQkywRXPHZnpVlQ&oh=00_AfRWrUCZVwNBH74RGivy-dHdX2B7XDy8HT35y3IoHpEk_Q&oe=687484AE',
-                    width: 24,
-                    height: 24,
-                  ),
-                ],
-              ),
-            ),
+            ],
           ),
-        ],
-      ),
-    ],
+        );
+      },
+    ),
   );
 }
